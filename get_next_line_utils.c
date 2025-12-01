@@ -5,95 +5,87 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-sal <aben-sal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/28 13:38:59 by aben-sal          #+#    #+#             */
-/*   Updated: 2025/11/30 13:50:29 by aben-sal         ###   ########.fr       */
+/*   Created: 2025/12/01 15:26:09 by aben-sal          #+#    #+#             */
+/*   Updated: 2025/12/01 15:26:10 by aben-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+char	*ft_strchr(const char *str, int c)
+{
+	size_t	i;
+
+	i = 0;
+	if (!str)
+		return (NULL);
+	while (str[i] && str[i] != (char)c)
+		i++;
+	if (str[i] == (char)c)
+		return ((char *)&str[i]);
+	return (NULL);
+}
+
+size_t	ft_strlen(char *str)
 {
 	size_t	i;
 
 	if (!str)
 		return (0);
 	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	if (str[i] == '\n')
+	while (str[i])
 		i++;
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
-{
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	while (s[i] && s[i] != (char)c)
-		i++;
-	if (s[i] == (char)c)
-		return ((char *)&s[i]);
-	return (NULL);
-}
-
 char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*str;
-	int		i;
-	int		j;
+	char	*newstr;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	j = 0;
-	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!str)
-		return (free(s1), NULL);
-	while (s1 && s1[i] && s1[i] != '\n')
-		str[j++] = s1[i++];
-	i = 0;
-	while (s2 && s2[i] && s2[i] != '\n')
-		str[j++] = s2[i++];
-	if (s2 && s2[i] == '\n')
-		str[j++] = '\n';
-	str[j] = '\0';
-	return (free(s1), str);
-}
-
-void	manage_buffer(char *buffer)
-{
-	int	end_idx;
-	int	new_idx;
-
-	end_idx = 0;
-	new_idx = 0;
-	while (buffer[end_idx] && buffer[end_idx] != '\n')
-		end_idx++;
-	if (buffer[end_idx] == '\n')
-		end_idx++;
-	while (buffer[end_idx])
-		buffer[new_idx++] = buffer[end_idx++];
-	while (new_idx < BUFFER_SIZE)
-		buffer[new_idx++] = '\0';
-	buffer[new_idx] = '\0';
-}
-
-char	*read_and_join_line(int fd, char *line, char *rest)
-{
-	int	bytes;
-
-	bytes = 1;
-	while (!ft_strchr(line, '\n') && bytes > 0)
+	newstr = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!newstr)
+		return (NULL);
+	while (s1 && s1[i])
 	{
-		bytes = read(fd, rest, BUFFER_SIZE);
-		if (bytes <= 0)
-			break ;
-		rest[bytes] = '\0';
-		line = ft_strjoin(line, rest);
-		if (!line)
-			return (NULL);
+		newstr[i] = s1[i];
+		i++;
 	}
+	j = i;
+	i = 0;
+	while (s2 && s2[i])
+	{
+		newstr[j] = s2[i];
+		j++;
+		i++;
+	}
+	newstr[j] = '\0';
+	return (free(s1), newstr);
+}
+
+char	*normleft(char *line, char *left)
+{
+	char	*nl;
+	size_t	i;
+
+	if (!line || line[0] == '\0')
+		return (free(line), NULL);
+	nl = ft_strchr(line, '\n');
+	if (nl)
+	{
+		nl++;
+		i = 0;
+		while (nl[i])
+		{
+			left[i] = nl[i];
+			i++;
+		}
+		left[i] = '\0';
+		nl[0] = '\0';
+	}
+	else
+		left[0] = '\0';
 	return (line);
 }
