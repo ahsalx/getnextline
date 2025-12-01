@@ -6,7 +6,7 @@
 /*   By: aben-sal <aben-sal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:26:03 by aben-sal          #+#    #+#             */
-/*   Updated: 2025/12/01 15:33:00 by aben-sal         ###   ########.fr       */
+/*   Updated: 2025/12/01 19:31:09 by aben-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #  define BUFFER_SIZE 10
 # endif
 
-#include <fcntl.h>
-#include <stdio.h>
+# include <fcntl.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
