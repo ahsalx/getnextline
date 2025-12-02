@@ -6,7 +6,7 @@
 /*   By: aben-sal <aben-sal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:26:06 by aben-sal          #+#    #+#             */
-/*   Updated: 2025/12/01 19:30:28 by aben-sal         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:14:35 by aben-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = NULL;
-	bytes = 1;
 	if (left[0] != '\0')
 		line = ft_strjoin(line, left);
-	while (!ft_strchr(line, '\n') && bytes > 0)
+	while (!ft_strchr(line, '\n'))
 	{
 		bytes = read(fd, left, BUFFER_SIZE);
 		if (bytes < 0)

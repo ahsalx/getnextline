@@ -6,7 +6,7 @@
 /*   By: aben-sal <aben-sal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:26:09 by aben-sal          #+#    #+#             */
-/*   Updated: 2025/12/01 19:38:13 by aben-sal         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:12:24 by aben-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*normleft(char *line, char *left)
 	char	*nl;
 	size_t	i;
 
-	if (!line || line[0] == '\0')
+	if (!line)
 		return (free(line), NULL);
 	nl = ft_strchr(line, '\n');
 	if (nl)
