@@ -6,7 +6,7 @@
 /*   By: aben-sal <aben-sal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:26:09 by aben-sal          #+#    #+#             */
-/*   Updated: 2025/12/02 16:12:24 by aben-sal         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:53:05 by aben-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	j;
 
 	i = 0;
-	newstr = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	// newstr = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	newstr = NULL;
 	if (!newstr)
 		return (NULL);
 	while (s1 && s1[i])

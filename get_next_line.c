@@ -6,7 +6,7 @@
 /*   By: aben-sal <aben-sal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 15:26:06 by aben-sal          #+#    #+#             */
-/*   Updated: 2025/12/02 16:14:35 by aben-sal         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:19:04 by aben-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,23 @@ char	*get_next_line(int fd)
 	}
 	return (normleft(line, left));
 }
+
+/* int main()
+{
+	int fd = open("tet.txt", O_RDONLY);
+	int fd2 = open("tet1.txt", O_RDONLY);
+	char *line;
+	char *line1;
+	int  i = 0;
+	while(i < 10)
+	{
+		line = get_next_line(fd);
+		write(1, line, ft_strlen(line));
+		free(line);
+		line1 = get_next_line(fd2);
+		write(1, line1, ft_strlen(line1));
+		free(line1);
+		i++;
+	}
+	printf("%d\n", i);
+} */
