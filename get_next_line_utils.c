@@ -45,8 +45,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	j;
 
 	i = 0;
-	// newstr = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	newstr = NULL;
+	newstr = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!newstr)
 		return (NULL);
 	while (s1 && s1[i])
